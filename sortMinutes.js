@@ -1,5 +1,12 @@
 (async () => {
 
+  const container = document.getElementById("archive-container");
+
+  if (!container) {
+    console.error("Container not found");
+    return;
+  }
+
   const jsonURL =
     "https://cdn.jsdelivr.net/gh/cv2automation/cv2automation@main/rawMinutes.json";
 
@@ -18,22 +25,13 @@
     December: 11
   };
 
-  // Create container
-  const container = document.createElement("div");
-
-  // Header
   const header = document.createElement("h2");
   header.textContent = "Archives";
 
-  container.appendChild(header);
-
-  // List
   const list = document.createElement("ul");
 
+  container.appendChild(header);
   container.appendChild(list);
-
-  // Add to page
-  document.body.appendChild(container);
 
   try {
 
@@ -45,7 +43,6 @@
 
     const archiveData = await response.json();
 
-    // Sort newest first
     archiveData.sort((a, b) => {
 
       if (b.Year !== a.Year) {
@@ -53,9 +50,9 @@
       }
 
       return monthOrder[b.Month] - monthOrder[a.Month];
+
     });
 
-    // Render links
     archiveData.forEach(item => {
 
       const li = document.createElement("li");
