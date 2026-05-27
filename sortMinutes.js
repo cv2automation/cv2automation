@@ -1,7 +1,7 @@
 (async () => {
 
   const jsonURL =
-    "https://cdn.jsdelivr.net/gh/cv2automation/cv2automation@main/archive.json";
+    "https://cdn.jsdelivr.net/gh/cv2automation/cv2automation@main/rawMinutes.json";
 
   const monthOrder = {
     January: 0,
